@@ -17,4 +17,3 @@ jobs:
           cd csc496
           ls
           git pull
-          gatsby build
