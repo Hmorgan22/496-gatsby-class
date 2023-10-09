@@ -14,6 +14,8 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: |
+          PATH=/home/student03/.vscode-server/bin/fdb98833154679dbaa7af67a5a29fe19e55c2b73/bin/remote-cli:/home/student03/.nvm/versions/node/v18.17.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
           cd csc496
           ls
           git pull
+          gatsby build
