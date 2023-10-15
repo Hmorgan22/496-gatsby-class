@@ -13,7 +13,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages =  async ({ actions, graphql, reporter}) => {
     const { createPage } = actions
     return new Promise((resolve, reject) => {
-        const pageTemplate = path.resolve(`src/pages/recipe.js`)
         resolve(
             graphql(
                 `query MyQuery {
@@ -38,6 +37,21 @@ exports.createPages =  async ({ actions, graphql, reporter}) => {
                           }
                         }
                       }
+                      nodeArticles(first: 100) {
+                        edges {
+                          node {
+                            id
+                            path
+                            body {
+                              format
+                              processed
+                              summary
+                              value
+                            }
+                            title
+                          }
+                        }
+                      }
                     }
                   }
                 `
@@ -49,18 +63,32 @@ exports.createPages =  async ({ actions, graphql, reporter}) => {
                     reject(result.errors)
                 }
                 console.log("PAGES");
-                //console.log(result.data.Drupal.nodeRecipes);
                 const pages = result.data.Drupal.nodeRecipes.edges
+                const pages2 = result.data.Drupal.nodeArticles.edges
 
                 pages.forEach(({ node} , index) => {
                     console.log("PATH: ");
                     console.log(node.path);
                     const page_path = node.path
-                    console.log(node.path);
 
                     createPage({
                         path: `${page_path}`,
-                        component: pageTemplate,
+                        component: path.resolve("src/pages/recipe.js"),
+                        context: {
+                            nid: node.id,
+                            data: node,
+                        },
+                    })
+                })
+
+                pages2.forEach(({ node} , index) => {
+                    console.log("PATH: ");
+                    console.log(node.path);
+                    const page_path = node.path
+
+                    createPage({
+                        path: `${page_path}`,
+                        component: path.resolve("src/pages/article.js"),
                         context: {
                             nid: node.id,
                             data: node,

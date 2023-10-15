@@ -12,7 +12,7 @@ const pageTemplate = props => {
     return (
         <div>
         <h4>{data.nodeArticle?.title}</h4>
-        <p>{data.nodeArticle?.body.summary}</p>
+        <p>{data.nodeArticle?.body.value}</p>
         </div>
         
     )
