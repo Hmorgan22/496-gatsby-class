@@ -10,32 +10,36 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     })
 }
 
-exports.createPages = ({ actions, graphql}) => {
+exports.createPages =  async ({ actions, graphql, reporter}) => {
     const { createPage } = actions
     return new Promise((resolve, reject) => {
         const pageTemplate = path.resolve(`src/pages/recipe.js`)
         resolve(
             graphql(
-                `
-                query MyQuery {
+                `query MyQuery {
                     Drupal {
-                        nodeRecipes(first: 100) {
-                            edges {
-                                node {
-                                    changed
-                                    id
-                                    cookingTime
-                                    created
-                                    path
-                                    status
-                                    title
-                                    preparationTime
-                                    numberOfServings
-                                }
+                      nodeRecipes(first: 100) {
+                        edges {
+                          node {
+                            changed
+                            id
+                            cookingTime
+                            created
+                            path
+                            status
+                            title
+                            preparationTime
+                            numberOfServings
+                            recipeInstruction {
+                              format
+                              processed
+                              value
                             }
+                          }
                         }
+                      }
                     }
-                }
+                  }
                 `
 
             ).then(result => {

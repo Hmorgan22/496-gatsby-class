@@ -3,7 +3,7 @@ import React from "react";
 
 const pageTemplate = props => {
     const data = {
-        nodeFood: props.pageContext.data
+        nodeArticle: props.pageContext.data
     }
     
     console.log(data);
@@ -11,9 +11,10 @@ const pageTemplate = props => {
 
     return (
         <div>
-            <h4>{data.nodeFood?.title}</h4>
-            <p>{data.nodeFood?.recipeInstruction.value}</p>
+        <h4>{data.nodeArticle?.title}</h4>
+        <p>{data.nodeArticle?.body.summary}</p>
         </div>
+        
     )
 }
 
