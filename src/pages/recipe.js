@@ -1,5 +1,7 @@
 import { graphql } from "gatsby";
 import React from "react";
+import img from "gatsby-image"
+
 
 const pageTemplate = props => {
     const data = {
@@ -12,7 +14,11 @@ const pageTemplate = props => {
     return (
         <div>
             <h4>{data.nodeFood?.title}</h4>
-            <p>{data.nodeFood?.recipeInstruction.value}</p>
+            <img 
+                src = {data.nodeFood?.mediaImage.mediaImage.url}
+                alt = "Photo"
+            />
+            <div dangerouslySetInnerHTML={{ __html: data.nodeFood?.recipeInstruction.processed}} />
         </div>
     )
 }

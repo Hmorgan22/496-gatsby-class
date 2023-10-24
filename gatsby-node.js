@@ -16,44 +16,59 @@ exports.createPages =  async ({ actions, graphql, reporter}) => {
         resolve(
             graphql(
                 `query MyQuery {
-                    Drupal {
-                      nodeRecipes(first: 100) {
-                        edges {
-                          node {
-                            changed
-                            id
-                            cookingTime
-                            created
-                            path
-                            status
-                            title
-                            preparationTime
-                            numberOfServings
-                            recipeInstruction {
-                              format
-                              processed
-                              value
+                  Drupal {
+                    nodeRecipes(first: 100) {
+                      edges {
+                        node {
+                          changed
+                          id
+                          cookingTime
+                          created
+                          path
+                          status
+                          title
+                          preparationTime
+                          numberOfServings
+                          recipeInstruction {
+                            format
+                            processed
+                            value
+                          }
+                          summary {
+                            format
+                            value
+                            processed
+                          }
+                          mediaImage {
+                            mediaImage {
+                              url
                             }
                           }
                         }
                       }
-                      nodeArticles(first: 100) {
-                        edges {
-                          node {
-                            id
-                            path
-                            body {
-                              format
-                              processed
-                              summary
-                              value
+                    }
+                    nodeArticles(first: 100) {
+                      edges {
+                        node {
+                          id
+                          path
+                          body {
+                            format
+                            processed
+                            summary
+                            value
+                          }
+                          title
+                          mediaImage {
+                            mediaImage {
+                              url
                             }
-                            title
                           }
                         }
                       }
                     }
                   }
+                }
                 `
 
             ).then(result => {
