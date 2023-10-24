@@ -44,6 +44,7 @@ exports.createPages =  async ({ actions, graphql, reporter}) => {
                               url
                             }
                           }
+                          ingredients
                         }
                       }
                     }
@@ -63,6 +64,12 @@ exports.createPages =  async ({ actions, graphql, reporter}) => {
                             mediaImage {
                               url
                             }
+                          }
+                          author {
+                            id
+                            displayName
+                            created
+                            changed
                           }
                         }
                       }
