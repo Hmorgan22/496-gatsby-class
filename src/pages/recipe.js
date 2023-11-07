@@ -4,6 +4,8 @@ import img from "gatsby-image"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import CookingTime from "../components/cookTime";
+import PrepTime from "../components/PrepTime";
 
 
 const pageTemplate = props => {
@@ -17,10 +19,19 @@ const pageTemplate = props => {
     return (
         <Container>
             <h4>{data.nodeFood?.title}</h4>
-            <img
-                src={data.nodeFood?.mediaImage.mediaImage.url}
-                alt="Photo"
-            />
+            <Row>
+                <Col sm={8}>
+                    <img
+                        src={data.nodeFood?.mediaImage.mediaImage.url}
+                        alt="Photo"
+                    />
+                </Col>
+                <Col sm={4}>
+                    <PrepTime time={data.nodeFood?.preparationTime} />
+                    <CookingTime time={data.nodeFood?.cookingTime} />
+
+                </Col>
+            </Row>
             <Row>
                 <Col sm={4}>
                     <h2>Ingredients</h2>
