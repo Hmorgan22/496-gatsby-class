@@ -1,4 +1,3 @@
-// myFunctions.test.js
 const { add } = require('./myFunction');
 
 describe('add function', () => {

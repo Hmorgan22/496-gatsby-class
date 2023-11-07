@@ -2,7 +2,7 @@
 
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Seo from "./seo"; // Adjust the import path as needed
+import Seo from "./seo";
 
 // Mock GraphQL data
 const mockData = {
