@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import CookingTime from "../components/cookTime";
 import PrepTime from "../components/PrepTime";
 import Servings from "../components/Servings";
+import Difficulty from "../components/Difficulty";
 
 
 const pageTemplate = props => {
@@ -31,6 +32,7 @@ const pageTemplate = props => {
                     <PrepTime time={data.nodeFood?.preparationTime} />
                     <CookingTime time={data.nodeFood?.cookingTime} />
                     <Servings amount={data.nodeFood?.numberOfServings} />
+                    <Difficulty task={data.nodeFood?.difficulty} />
 
                 </Col>
             </Row>

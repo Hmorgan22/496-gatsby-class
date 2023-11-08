@@ -44,7 +44,12 @@ exports.createPages =  async ({ actions, graphql, reporter}) => {
                               url
                             }
                           }
+                          difficulty
                           ingredients
+                          author {
+                            created
+                            displayName
+                          }
                         }
                       }
                     }
@@ -66,10 +71,8 @@ exports.createPages =  async ({ actions, graphql, reporter}) => {
                             }
                           }
                           author {
-                            id
-                            displayName
                             created
-                            changed
+                            displayName
                           }
                         }
                       }
